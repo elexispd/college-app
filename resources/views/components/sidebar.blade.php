@@ -9,7 +9,7 @@
 
 
                     <li>
-                        <a href="index.html">
+                        <a href="{{ route('dashboard') }}">
                             <i class="mdi mdi-view-dashboard-outline"></i>
                             <span> Dashboard </span>
                         </a>

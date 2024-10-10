@@ -47,16 +47,18 @@
                                 </div>
                                 @endif
 
+
+
                                 <form  method="POST" action="{{ route('login') }}">
                                     @csrf
                                     <div class="mb-3">
                                         <label for="emailaddress" class="form-label">Username</label>
-                                        <input class="form-control" type="text" required=""  placeholder="Enter your username">
+                                        <input class="form-control" type="text" required="" name="username"  placeholder="Enter your username">
                                     </div>
 
                                     <div class="mb-3">
                                         <label for="password" class="form-label">Password</label>
-                                        <input class="form-control" type="password" required=""  id="password" placeholder="Enter your password">
+                                        <input class="form-control" type="password" name="password" required=""  id="password" placeholder="Enter your password">
                                     </div>
 
                                     <div class="mb-3">

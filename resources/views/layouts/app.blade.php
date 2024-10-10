@@ -157,10 +157,13 @@
                                 <div class="dropdown-divider"></div>
 
                                 <!-- item-->
-                                <a href="auth-logout.html" class="dropdown-item notify-item">
-                                    <i class="fe-log-out"></i>
-                                    <span>Logout</span>
-                                </a>
+                                <form action="{{ route('logout') }}" method="post">
+                                    @csrf
+                                    <button class="dropdown-item notify-item">
+                                        <i class="fe-log-out"></i>Logout
+                                    </button>
+                                </form>
+
 
                             </div>
                         </li>
