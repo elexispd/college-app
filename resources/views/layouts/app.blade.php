@@ -18,6 +18,15 @@
         <!-- icons -->
         <link href="{{ asset('css/icons.min.css') }}" rel="stylesheet" type="text/css" />
 
+        <!-- Sweet Alert-->
+        <link href="{{ asset('libs/sweetalert2/sweetalert2.min.css') }}" rel="stylesheet" type="text/css" />
+
+        <script src="{{ asset('js/pages/sweetalert2@11.js') }}"></script>
+
+
+
+
+
     </head>
 
     <!-- body start -->
@@ -294,6 +303,7 @@
 
         <!-- Dashboar init js-->
         <script src="{{ asset('js/pages/dashboard.init.js') }}"></script>
+
 
         <!-- App js-->
         <script src="{{ asset('js/app.min.js') }}"></script>

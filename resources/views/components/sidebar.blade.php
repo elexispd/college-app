@@ -26,7 +26,7 @@
                         <div class="collapse" id="email">
                             <ul class="nav-second-level">
                                 <li>
-                                    <a href="#">Register Student</a>
+                                    <a href="{{ route('student.create') }}">Register Student</a>
                                 </li>
                                 <li>
                                     <a href="#">View Students</a>
