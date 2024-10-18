@@ -70,6 +70,11 @@ class User extends Authenticatable
         $query->where('name', 'like', "%{$value}%")->orWhere('username', 'like', "%{$value}%");
     }
 
+    public function getRouteKeyName()
+    {
+        return 'username'; // Use 'username' for model binding
+    }
+
 
 
 

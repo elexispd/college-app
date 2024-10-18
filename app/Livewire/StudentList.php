@@ -14,6 +14,12 @@ class StudentList extends Component
     public $perPage = 2;
     public $search = '';
 
+    public $student;
+
+
+
+
+
     // Updating query string to persist search parameters across pagination
     protected $queryString = [
         'status' => ['except' => 'all'],
@@ -37,6 +43,11 @@ class StudentList extends Component
             session()->flash('error', 'Invalid search request');
             return $this->redirectRoute('student.search');
         }
+    }
+
+    public function editStudent($student_id) {
+        $this->student = User::findOrFail($student_id);
+        $this->dispatch('showEditStudentModal', $this->student);
     }
 
     public function render()
@@ -68,6 +79,10 @@ class StudentList extends Component
 
         return view('livewire.student-list', compact('students'));
     }
+
+
+
+
 
 
 

@@ -28,11 +28,12 @@
                             <td>2024 Course 2</td>
                             <td>{{ $student->created_at }}</td>
                             <td>
-                                <a href="#" class="btn btn-xs btn-info">View</a>
-                                <a href="#" class="btn btn-xs btn-warning">Edit</a>
+                                <a href="{{ route('profile.show', ['user' => $student, 'name' => str_replace(' ', '-', $student->name)]) }}" class="btn btn-xs btn-info">View</a>
+                                <a href="#" class="btn btn-xs btn-warning" wire:click="$dispatch('show-edit-modal', { student_id: {{ $student->id }} })" data-bs-toggle="modal" data-bs-target="#con-close-modal" >Edit</a>
                                 <a href="#" class="btn btn-xs btn-danger">Delete</a>
                             </td>
                         </tr>
+
                     @endforeach
                  </tbody>
             </table>
@@ -52,6 +53,8 @@
                 {{ $students->links('vendor.livewire.bootstrap') }}
             </div>
 
+            <!-- Include the modal outside the loop -->
+            <livewire:form-modal :key="'edit-student-modal'" />
 
         </div> <!-- end .table-responsive -->
 
