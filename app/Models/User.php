@@ -60,4 +60,18 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+
+    public function is_student() {
+
+    }
+
+    public function scopeSearch($query, $value) {
+        $query->where('name', 'like', "%{$value}%")->orWhere('username', 'like', "%{$value}%");
+    }
+
+
+
+
+
 }

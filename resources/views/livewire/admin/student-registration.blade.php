@@ -16,11 +16,11 @@
 
         <div class="mb-3">
             <label for="validationCustom04" class="form-label">Student Category</label>
-            <select class="form-control" id="" wire:model="category">
+            <select class="form-control" id="" wire:model="category" wire:change="categoryChange">
                 <option value=""></option>
                 <option value="general">General</option>
                 <option value="special">Special</option>
-                <option value="civilian ">Civilian</option>
+                <option value="civilian">Civilian</option>
             </select>
             @error('category')
                 <div class="text-danger">
@@ -32,7 +32,12 @@
 
         <div class="mb-3">
             <label for="validationCustom02" class="form-label">AP/F Number (Username)</label>
-            <input type="" class="form-control" id="validationCustom02" wire:model="ap_number" />
+            <input type=""
+                class="form-control" id="validationCustom02"
+                wire:model="ap_number"
+                {{ trim($category) === 'civilian' ? 'readonly' : '' }}
+
+            />
             @error('ap_number')
                 <div class="text-danger">
                     {{ $message }}
@@ -59,7 +64,7 @@
         <div class="mb-3">
             <label for="validationCustom04" class="form-label">State</label>
             <select class="form-control" id="validationCustom04" wire:model="state" required>
-                <option value="" disabled>Select State</option>
+                <option value="" >Select State</option>
                 <option value="Abia">Abia</option>
                 <option value="Adamawa">Adamawa</option>
                 <option value="Akwa Ibom">Akwa Ibom</option>
@@ -128,7 +133,13 @@
 
         <div class="mb-3">
             <label for="validationCustom04" class="form-label">Birth Year</label>
-            <input type="text" class="form-control" id="validationCustom04" wire:model="birth_year" required />
+            <select class="form-control" id="year" wire:model="birth_year" required>
+                <option value="" >Select Year</option>
+                @for ($year = 2010; $year >= 1950; $year--)
+                    <option value="{{ $year }}">{{ $year }}</option>
+                @endfor
+            </select>
+
             @error('birth_year')
                 <div class="text-danger">
                     {{ $message }}
@@ -164,7 +175,7 @@
             @enderror
         </div>
 
-        <x-button loadingText="Processing..." x-data x-on:click="$dispatch('show-alert')">
+        <x-button loadingText="Processing..." x-data x-on:click="process">
             Register
         </x-button>
 

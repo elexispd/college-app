@@ -11,7 +11,7 @@
 </div>
 
 
-{{-- <x-alert-dialog></x-alert-dialog> --}}
+<x-alert-dialog type="success" title="Student Created Successfully"></x-alert-dialog>
 
 
 

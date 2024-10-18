@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\StudentController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,7 +28,9 @@ Route::middleware('auth')->group(function () {
     })->name('dashboard');
 
     Route::prefix('students')->group(function () {
-        Route::get('create', [ProfileController::class, 'create'])->name('student.create');
+        Route::get('create', [StudentController::class, 'create'])->name('student.create');
+        Route::get('', [StudentController::class, 'search'])->name('student.search');
+        Route::get('result', [StudentController::class, 'index'])->name('student.index');
     });
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

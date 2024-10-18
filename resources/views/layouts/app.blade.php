@@ -3,7 +3,7 @@
     <head>
 
         <meta charset="utf-8" />
-        <title>Dashboard | Adminto - Responsive Admin Dashboard Template</title>
+        <title>Dashboard | PCIT Abeaokuta</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
         <meta content="Coderthemes" name="author" />
@@ -20,6 +20,8 @@
 
         <!-- Sweet Alert-->
         <link href="{{ asset('libs/sweetalert2/sweetalert2.min.css') }}" rel="stylesheet" type="text/css" />
+
+        @livewireStyles
 
         <script src="{{ asset('js/pages/sweetalert2@11.js') }}"></script>
 
@@ -284,6 +286,10 @@
 
         <!-- Right bar overlay-->
         <div class="rightbar-overlay"></div>
+
+
+        @livewireScripts
+
 
         <!-- Vendor -->
         <script src="{{ asset('libs/jquery/jquery.min.js') }}"></script>
