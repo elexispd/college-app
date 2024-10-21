@@ -1,21 +1,20 @@
-
+@props(["type", "title"])
 
 <div x-data="{ show: false }"
+     x-on:show-alert.window="show = true"
      x-init="$watch('show', value => {
         if (value) {
             Swal.fire({
                 position: 'center',
-                icon: 'success',
-                title: 'Your work has been saved',
+                icon: '{{ $type ?? 'info' }}',  {{-- Default type is success --}}
+                title: '{{ $title ?? 'Action Completed' }}', {{-- Default title --}}
                 showConfirmButton: true,
-                timer: 3000,
-                confirmButtonText: 'OK',
+                confirmButtonText: 'OK'
             }).then(() => {
-                show = false; // Hide the alert after it's done
+                show = false;  // Reset 'show' after SweetAlert is dismissed
             });
         }
      })"
-     x-on:show-alert.window="show = true"
-     x-show="false" {{-- No need to use x-show since Swal manages visibility --}}
+     x-show="false"
 >
 </div>

@@ -29,7 +29,7 @@
                                     <a href="{{ route('student.create') }}">Register Student</a>
                                 </li>
                                 <li>
-                                    <a href="#">View Students</a>
+                                    <a href="{{ route('student.search') }}">View Students</a>
                                 </li>
                             </ul>
                         </div>

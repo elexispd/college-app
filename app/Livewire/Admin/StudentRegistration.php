@@ -11,18 +11,19 @@ class StudentRegistration extends Component
 {
 
     public $rules = [
-        'name' => ['required','min:2','max:50'],
+        'name' => ['required', 'min:2', 'max:50'],
         'email' => ['required', 'email', 'unique:users'],
         'ap_number' => ['required', 'unique:users'],
         'birth_year' => ['required', 'integer', 'min:1900', 'max:2022'],
         'gender' => ['required', 'string'],
-        'command' => ['required', 'string'],
-        'enlistment_date' => ['date'],
-        'promoted_date' => ['date'],
-        'qualification' => ['required','string'],
-        'state' => ['required','string'],
-        'category' => ['required','string']
+        'command' => ['nullable', 'string'], // Only validate if present
+        'enlistment_date' => ['nullable', 'date'], // Only validate if present
+        'promoted_date' => ['nullable', 'date'], // Only validate if present
+        'qualification' => ['required', 'string'],
+        'state' => ['required', 'string'],
+        'category' => ['required', 'string']
     ];
+
 
     public $name;
     public $email;
@@ -36,7 +37,15 @@ class StudentRegistration extends Component
     public $state;
     public $category;
 
-    #
+    public function categoryChange()
+    {
+        if (trim($this->category) === 'civilian') {
+            $this->ap_number = "CIV-".now()->timestamp; // Use current timestamp for unique ap_number
+        } else {
+            $this->ap_number = '';
+        }
+    }
+
     public function process() {
         $validated = $this->validate($this->rules);
 
@@ -62,10 +71,13 @@ class StudentRegistration extends Component
         $this->reset();
 
         // Dispatch a browser event to show the alert
-        // $this->dispatchBrowserEvent('show-alert', [
-        //     'type' => 'success',
-        //     'message' => 'Student created successfully'
-        // ]);
+
+        $this->dispatch('show-alert');
+
+
+
+
+
     }
     public function render()
     {
